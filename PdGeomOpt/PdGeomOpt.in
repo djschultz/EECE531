@@ -1,7 +1,7 @@
 # Crystalline silicon : computation of the optimal lattice parameter
 # Convergence with respect to the number of k points.
 
-ndtset 2
+
 
 #Optimization of the lattice parameters
 optcell 1
@@ -21,8 +21,7 @@ shiftk  0.5 0.5 0.5  # These shifts will be the same for all grids
         0.0 0.5 0.0
         0.0 0.0 0.5
 
-ngkpt1  2 2 2  
-ngkpt2  4 4 4 
+ngkpt  2 2 2  
 #ngkpt3  6 6 6    Not used ! 
 #ngkpt4  8 8 8  
 
