@@ -1,0 +1,8 @@
+sim6geom.in
+sim6geom.out
+sim6geom_i
+sim6geom_o
+sim6geom
+../../../Psps_for_tests/Ti.psp8
+../../../Psps_for_tests/O.psp8
+../../../Psps_for_tests/Pd.psp8
