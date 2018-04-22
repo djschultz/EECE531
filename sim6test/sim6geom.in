@@ -1,0 +1,98 @@
+# Crystalline silicon : computation of the total energy
+#
+
+#Definition of the unit cell
+acell 8.6808 8.6808 40          # This is the palladium cellin  the xy directions, and 3 layers of Pd and 3 layers ot TiO2 plus
+                                   #extra two hartrees in the z direction tall
+rprim  1  0  0   # In lessons 1 and 2, these primitive vectors 
+       0  1  0   # (to be scaled by acell) were 1 0 0  0 1 0  0 0 1 
+       0  0  1   # that is, the default.
+
+#Definition of the atom types
+ntypat 3          # There are three types of atoms
+znucl 22 8 46     #There are Titanium (22), Oxygen (8), and Palladium (46) atoms in the system.     
+                  # The keyword "znucl" refers to the atomic number of the 
+                  # possible type(s) of atom. The pseudopotential(s) 
+                  # mentioned in the "files" file must correspond
+                  # to the type(s) of atom. Here, the only type is Silicon.
+ixc 11                         
+
+#Definition of the atoms
+natom 20           # There are thirty atoms
+typat 4*1 8*2 8*3    # There are 6 Titanium atoms, 12 oxygen atoms, and 12 palladium atoms
+xcart   
+4.08445805419086E+00 -3.34448480388691E+00 -4.97772459000885E+01
+4.59868771421462E+00 -6.67888411927033E+00  3.77207133648222E+01
+3.94783318772297E-01  9.71262265091657E+00 -1.14556878561858E+01
+6.97837094807091E-01  8.84797204208137E+00  8.25925142345493E+01
+7.39107764185772E+01 -5.28784250438606E+00 -1.59175757642233E+01
+7.41835394532609E+01 -5.44045253032858E+00  3.90626567068456E+01
+5.51227482082493E+00 -3.91684478818891E+00  7.54770970871451E+00
+7.66585604819512E+00 -3.38748608023592E+00  6.15369878452432E+01
+1.82730960755174E+00  6.46227389634030E+00  1.28078962475098E+01
+-1.57015283262975E-01  3.46958516548217E+00  5.96753520178635E+01
+8.44143453284772E+00  8.23469814085710E+00 -2.23277462931303E+01
+8.40507333528941E+00  8.40769781181748E+00  3.26466302143887E+01
+-1.06630792950877E+01 -6.62943393708649E-01 -1.15765712004966E+02
+4.32431178110193E+00 -9.91514998975878E-01  7.01524783027327E+01
+1.20186834490649E+01  5.36234013758256E+00  2.85230190812160E+01
+3.96452187640976E+00  3.42131850123793E-01  3.78887774755496E+00
+1.16266952624366E+01 -3.80304989397816E+00  2.67312434503798E+01
+3.69798989779396E+00 -1.56247150411741E-01  3.81463723268098E+00
+-7.01357304362532E+00 -1.10253810993227E-01  9.11846205042889E+01
+-7.82365043362978E-01 -2.85717620836994E-01 -1.39543688401964E+01
+                  
+                  
+                  
+#Definition of the planewave basis set
+ecut  60.0         # Maximal kinetic energy cut-off, in Hartree
+
+#Definition of the k-point grid
+kptopt 2          # Option for the automatic generation of k points, taking
+                  # into account the symmetry
+ngkpt 4 1 1        # This is a 2x2x2 grid based on the primitive vectors
+nshiftk 1         # of the reciprocal space (that form a BCC lattice !),
+                  # repeated four times, with different shifts :
+shiftk 0.5 0.5 0.5
+       0.5 0.0 0.0
+       0.0 0.5 0.0
+       0.0 0.0 0.5
+                  # In cartesian coordinates, this grid is simple cubic, and
+                  # actually corresponds to the
+                  # so-called 4x4x4 Monkhorst-Pack grid
+ngfft 30 30 100
+
+optcell 0
+ionmov 5
+ntime 10
+dilatmx 1.1
+ecutsm 0.5
+
+#Definition of the SCF procedure
+nstep 10          # Maximal number of SCF cycles
+toldfe 1.0d-2     # Will stop when, twice in a row, the difference 
+                  # between two consecutive evaluations of total energy 
+                  
+# differ by less than toldfe (in Hartree) 
+                  # This value is way too large for most realistic studies of materials
+diemac 12.0       # Although this is not mandatory, it is worth to
+                  # precondition the SCF cycle. The model dielectric
+                  # function used as the standard preconditioner
+                  # is described in the "dielng" input variable section.
+                  # Here, we follow the prescription for bulk silicon.
+
+## After modifying the following section, one might need to regenerate the pickle database with runtests.py -r
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%   tbase3_1.out, tolnlines=  0, tolabs=  0.000e+00, tolrel=  0.000e+00
+#%% psp_files =  14si.pspnc
+#%% [paral_info]
+#%% max_nprocs = 4
+#%% [extra_info]
+#%% authors = Unknown
+#%% keywords = 
+#%% description = Crystalline silicon: computation of the total energy
+#%%<END TEST_INFO>
