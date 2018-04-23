@@ -66,7 +66,7 @@ ngfft 30 30 100
 
 
 #Definition of the SCF procedure
-nstep 10          # Maximal number of SCF cycles
+nstep 30          # Maximal number of SCF cycles
 toldfe 1.0d-2     # Will stop when, twice in a row, the difference 
                   # between two consecutive evaluations of total energy 
                   
