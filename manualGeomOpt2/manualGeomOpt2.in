@@ -1,0 +1,90 @@
+# Crystalline silicon : computation of the total energy
+#
+
+ndtset 5
+#Definition of the unit cell
+acell: 8.6808 8.6808 25          # This is the palladium cellin  the xy directions, and 3 layers of Pd and 3 layers ot TiO2 plus
+acell+ 0.0 0.0 0.189                                   #extra two hartrees in the z direction tall
+
+rprim  1  0  0   # In lessons 1 and 2, these primitive vectors 
+       0  1  0   # (to be scaled by acell) were 1 0 0  0 1 0  0 0 1 
+       0  0  1   # that is, the default.
+
+#Definition of the atom types
+ntypat 3          # There are three types of atoms
+znucl 22 8 46     #There are Titanium (22), Oxygen (8), and Palladium (46) atoms in the system.     
+                  # The keyword "znucl" refers to the atomic number of the 
+       
+       # possible type(s) of atom. The pseudopotential(s) 
+                  # mentioned in the "files" file must correspond
+                  # to the type(s) of atom. Here, the only type is Silicon.
+ixc 11                         
+
+#Definition of the atoms
+natom 10           # There are thirty atoms
+typat 2*1 4*2 4*3    # There are 6 Titanium atoms, 12 oxygen atoms, and 12 palladium atoms
+xcart:   
+0.0000 0.0000 0.0000
+4.3404 2.7956 4.3404
+2.6910 0.0000 2.6910
+5.9898 0.0000 5.9898
+1.6494 2.7956 7.0314
+7.0314 2.7956 1.6494
+1.6494 0.0000 13.6808
+3.6762 2.5995 16.2803
+3.6762 -2.5995 16.2803
+0.0000 0.0000 18.8797
+                  
+xcart+ 
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+0.0 0.0 0.189
+0.0 0.0 0.189
+0.0 0.0 0.189
+0.0 0.0 0.189
+
+
+#Definition of the planewave basis set
+ecut  60.0         # Maximal kinetic energy cut-off, in Hartree
+
+#Definition of the k-point grid
+kptopt 2          # Option for the automatic generation of k points, taking
+                  # into account the symmetry
+ngkpt 4 1 1        # This is a 2x2x2 grid based on the primitive vectors
+nshiftk 1         # of the reciprocal space (that form a BCC lattice !),
+                  # repeated four times, with different shifts :
+shiftk 0.5 0.5 0.5
+                  # In cartesian coordinates, this grid is simple cubic, and
+                  # actually corresponds to the
+                  # so-called 4x4x4 Monkhorst-ition of the SCF procedure
+nstep 40          # Maximal number of SCF cycles
+toldfe 1.0d-2     # Will stop when, twice in a row, the difference 
+                  # between two consecutive evaluations of total energy 
+                  
+# differ by less than toldfe (in Hartree) 
+                  # This value is way too large for most realistic studies of materials
+diemac 12.0       # Although this is not mandatory, it is worth to
+                  # precondition the SCF cycle. The model dielectric
+                  # function used as the standard preconditioner
+                  # is described in the "dielng" input variable section.
+                  # Here, we follow the prescription for bulk silicon.
+
+## After modifying the following section, one might need to regenerate the pickle database with runtests.py -r
+#%%<BEGIN TEST_INFO>
+#%% [setup]
+#%% executable = abinit
+#%% [files]
+#%% files_to_test = 
+#%%   tbase3_1.out, tolnlines=  0, tolabs=  0.000e+00, tolrel=  0.000e+00
+#%% psp_files =  14si.pspnc
+#%% [paral_info]
+#%% max_nprocs = 4
+#%% [extra_info]
+#%% authors = Unknown
+#%% keywords = 
+#%% description = Crystalline silicon: computation of the total energy
+#%%<END TEST_INFO>
