@@ -6,11 +6,11 @@
 #Optimization of the lattice parameters
 optcell 1
 ionmov  2
-ntime  20
-dilatmx 1.2
+ntime  30
+dilatmx 2
 ecutsm  0.5
 
-#strprecon 0.1
+strprecon 0.1
 
 ixc 11 
 
@@ -60,7 +60,7 @@ xcart              # This keyword indicate that the location of the atoms
 7.0314 2.7956 7.0314
 
 #Definition of the planewave basis set
-ecut 20         # Maximal kinetic energy cut-off, in Hartree
+ecut 60         # Maximal kinetic energy cut-off, in Hartree
 
 #Definition of the SCF procedure
 nstep 20          # Maximal number of SCF cycles
