@@ -1,10 +1,11 @@
+
 # Crystalline silicon : computation of the total energy
 #
 
 ndtset 5
 #Definition of the unit cell
 acell: 8.6808 8.6808 25          # This is the palladium cellin  the xy directions, and 3 layers of Pd and 3 layers ot TiO2 plus
-acell+ 0.0 0.0 0.5                                   #extra two hartrees in the z direction tall
+acell+ 0.0 0.0 0.2                                   #extra two hartrees in the z direction tall
 
 rprim  1  0  0   # In lessons 1 and 2, these primitive vectors 
        0  1  0   # (to be scaled by acell) were 1 0 0  0 1 0  0 0 1 
