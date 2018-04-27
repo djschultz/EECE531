@@ -6,7 +6,7 @@
 #Optimization of the lattice parameters
 optcell 1
 ionmov  2
-ntime  10
+ntime  20
 dilatmx 1.2
 ecutsm  0.5
 
