@@ -1,8 +1,8 @@
-DOSwithoutGeom.in
-DOSwithoutGeom.out
-DOSwithoutGeom_i
-DOSwithoutGeom_o
-DOSwithoutGeom
-../../../Psps_for_tests/Ti.psp8
-../../../Psps_for_tests/O.psp8
-../../../Psps_for_tests/Pd.psp8
+DOSwithoutGeom1Layer.in
+DOSwithoutGeom1Layer.out
+DOSwithoutGeom1Layer_i
+DOSwithoutGeom1Layer_o
+DOSwithoutGeom1Layer
+Ti.psp8
+O.psp8
+Pd.psp8
