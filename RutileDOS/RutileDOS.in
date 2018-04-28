@@ -1,16 +1,4 @@
-# Crystalline silicon : computation of the optimal lattice parameter
-# Convergence with respect to the number of k points.
-
-
-
-#Optimization of the lattice parameters
-optcell 1
-ionmov  2
-ntime  10
-dilatmx 1.2
-ecutsm  0.5
-
-#strprecon 0.1
+ixc 11 
 
 #Definition of the k-point grids
 kptopt 1          # Option for the automatic generation of k points, taking
@@ -32,7 +20,7 @@ getwfk -1         # This is to speed up the calculation, by restarting
 prtdos 2
 
 #Definition of the unit cell
-acell 8.6808 8.6808 5.5911          # This is equivalent to   10.18 10.18 10.18
+acell 8.6808 5.5911 8.6808          # This is equivalent to   10.18 10.18 10.18
 rprim  1 0 0   # FCC primitive vectors (to be scaled by acell)
        0 1 0   
        0 0 1
@@ -51,17 +39,17 @@ typat 2*1 4*2        # They both are of type 1, that is, Silicon.
 xcart              # This keyword indicate that the location of the atoms
                   # will follow, one triplet of number for each atom
 0.0000 0.0000 0.0000
-4.3404 4.3404 2.7956
-2.6910 2.6910 0.0000
-5.9898 5.9898 0.0000
-1.6494 7.0314 2.7956
-7.0314 1.6494 2.7956
+4.3404 2.7956 4.3404
+5.9898 0.0000 2.6910
+2.6910 0.0000 5.9898
+1.6494 2.7956 1.6494
+7.0314 2.7956 7.0314
 
 #Definition of the planewave basis set
-ecut 8.0         # Maximal kinetic energy cut-off, in Hartree
+ecut 60         # Maximal kinetic energy cut-off, in Hartree
 
 #Definition of the SCF procedure
-nstep 10          # Maximal number of SCF cycles
+nstep 50          # Maximal number of SCF cycles
 toldfe 1.0d-4     # Will stop when, twice in a row, the difference 
                   # between two consecutive evaluations of total energy 
                   # differ by less than toldfe (in Hartree) 
